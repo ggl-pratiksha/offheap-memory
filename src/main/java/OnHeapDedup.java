@@ -42,8 +42,8 @@ public class OnHeapDedup {
                 count++;
             }
         }
-        System.out.println("\n time taken : " + (System.currentTimeMillis() - startTime));
-        System.out.println("current data size : " + dedupChecker.data.size() + "\nCount : " + count);
+        System.out.println("\nTime taken : " + (System.currentTimeMillis() - startTime));
+        System.out.println("current data size : " + dedupChecker.data.size() + "\t + \t Duplicate : " + count);
         /*System.out.println("\nunique : \t" + dedupChecker.unique);
         System.out.println("duplicate : " + dedupChecker.duplicate);
         System.out.println(count + " == " + dedupChecker.duplicate.size());*/

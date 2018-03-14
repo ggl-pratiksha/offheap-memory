@@ -34,8 +34,8 @@ public class OnHeapGroupBy {
             onHeapGroupBy.groupBy(i, 10);
             count++;
         }
-        System.out.println("\n time taken : " + (System.currentTimeMillis() - startTime));
-        System.out.println("current data size : " + onHeapGroupBy.data.size() + "\tDuplicate : " + count);
+        System.out.println("\nTime taken : " + (System.currentTimeMillis() - startTime));
+        System.out.println("current data size : " + onHeapGroupBy.data.size() + "\t + \tDuplicate : " + count);
         /*System.out.println("\nunique : \t" + onHeapGroupBy.unique);
         System.out.println("duplicate : " + onHeapGroupBy.duplicate);
         System.out.println(count + " == " + onHeapGroupBy.duplicate.size());*/

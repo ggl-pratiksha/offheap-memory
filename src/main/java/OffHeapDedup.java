@@ -54,8 +54,8 @@ public class OffHeapDedup extends OffHeapCollection {
                 count++;
             }
         }
-        System.out.println("\n time taken : " + (System.currentTimeMillis() - startTime));
-        System.out.println(offHeapDedup + "\nCount : " + count);
+        System.out.println("\nTime taken : " + (System.currentTimeMillis() - startTime));
+        System.out.println(offHeapDedup + "\t + \t Duplicates : " + count);
         offHeapDedup.free();
 
         /*System.out.println("\nunique : \t" + dedupChecker.unique);

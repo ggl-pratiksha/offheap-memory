@@ -92,8 +92,8 @@ public class OffHeapGroupBy extends OffHeapCollection {
             groupByObj.groupBy(i, 10);
             count++;
         }
-        System.out.println("\n time taken : " + (System.currentTimeMillis() - startTime));
-        System.out.println(groupByObj + "\tDuplicate : " + count);
+        System.out.println("\nTime taken : " + (System.currentTimeMillis() - startTime));
+        System.out.println(groupByObj + "\t + \t Duplicate : " + count);
         groupByObj.free();
         /*System.out.println("\nUnique: " + groupByObj.unique);
         System.out.println("Duplicate: " + groupByObj.duplicate);
