@@ -81,4 +81,48 @@ public abstract class OffHeapCollection {
 
     abstract public boolean containsKey(int key);
 
+    public static long getBlockSize() {
+        return BLOCK_SIZE;
+    }
+
+    public ArrayList<OffheapMemoryBlock> getMemoryBlocks() {
+        return memoryBlocks;
+    }
+
+    public void setMemoryBlocks(ArrayList<OffheapMemoryBlock> memoryBlocks) {
+        this.memoryBlocks = memoryBlocks;
+    }
+
+    public AddressHashSet getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(AddressHashSet addresses) {
+        this.addresses = addresses;
+    }
+
+    public int getMemoryBlockOffset() {
+        return memoryBlockOffset;
+    }
+
+    public void setMemoryBlockOffset(int memoryBlockOffset) {
+        this.memoryBlockOffset = memoryBlockOffset;
+    }
+
+    public int getCurrentMemoryBlock() {
+        return currentMemoryBlock;
+    }
+
+    public void setCurrentMemoryBlock(int currentMemoryBlock) {
+        this.currentMemoryBlock = currentMemoryBlock;
+    }
+
+    public long getTotalElements() {
+        return totalElements;
+    }
+
+    public void setTotalElements(long totalElements) {
+        this.totalElements = totalElements;
+    }
+
 }

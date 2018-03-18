@@ -16,6 +16,8 @@ public class OffheapMemoryBlock {
         return length;
     }
 
+    public OffheapMemoryBlock() { }
+
     public OffheapMemoryBlock(long pBaseAddress, long pLength) {
         this.baseAddress = pBaseAddress;
         this.length = pLength;

@@ -15,46 +15,15 @@ public class AddressHashSet {
 
     public final static int SEED = 42;
 
-    public OffheapMemoryBlock getOffheapMemoryBlock() {
-        return offheapMemoryBlock;
-    }
-
-    public void setOffheapMemoryBlock(OffheapMemoryBlock offheapMemoryBlock) {
-        this.offheapMemoryBlock = offheapMemoryBlock;
-    }
-
-    public long getSizeInBytes() {
-        return sizeInBytes;
-    }
-
-    public void setSizeInBytes(long sizeInBytes) {
-        this.sizeInBytes = sizeInBytes;
-    }
-
-    public long getThreshold() {
-        return threshold;
-    }
-
-    public void setThreshold(long threshold) {
-        this.threshold = threshold;
-    }
-
-    public int getMask() {
-        return mask;
-    }
-
-    public void setMask(int mask) {
-        this.mask = mask;
-    }
-
-    OffheapMemoryBlock offheapMemoryBlock;
-    long sizeInBytes;
-    long threshold;
-    int mask;
-
+    public AddressHashSet() {}
     public AddressHashSet(long size) {
         setup(size);
     }
+
+    private OffheapMemoryBlock offheapMemoryBlock;
+    private long sizeInBytes;
+    private long threshold;
+    private int mask;
 
     /**
      * Calculates hashAddress of key and puts offheap address of key at hashAddress.
@@ -178,30 +147,36 @@ public class AddressHashSet {
                 ", threshold=" + threshold +
                 '}';
     }
+
+    public OffheapMemoryBlock getOffheapMemoryBlock() {
+        return offheapMemoryBlock;
+    }
+
+    public void setOffheapMemoryBlock(OffheapMemoryBlock offheapMemoryBlock) {
+        this.offheapMemoryBlock = offheapMemoryBlock;
+    }
+
+    public long getSizeInBytes() {
+        return sizeInBytes;
+    }
+
+    public void setSizeInBytes(long sizeInBytes) {
+        this.sizeInBytes = sizeInBytes;
+    }
+
+    public long getThreshold() {
+        return threshold;
+    }
+
+    public void setThreshold(long threshold) {
+        this.threshold = threshold;
+    }
+
+    public int getMask() {
+        return mask;
+    }
+
+    public void setMask(int mask) {
+        this.mask = mask;
+    }
 }
-
-
-//int hash = Murmur3_x86_32.hashUnsafeWords(value, Unsafe.ARRAY_LONG_BASE_OFFSET, 8, SEED);
-
-/**
- *
- public boolean putxxx(long value) {
- boolean isSaved = false;
- long address = getAddress(value);
- long ad = address;
- long val = OffHeapFS.getLong(address);
- while(val != -1 && address <= offheapMemoryBlock.getEndAddress()) {
- address = address + 8;
- val = OffHeapFS.getLong(address);
- }
- if(val != -1) {
- System.out.println("\nCan not accommodate " + value + " for " + ad);
- }
- else {
- OffHeapFS.putLong(address, value);
- isSaved = true;
- sizeInBytes += 8;
- }
- return isSaved;
- }
- */

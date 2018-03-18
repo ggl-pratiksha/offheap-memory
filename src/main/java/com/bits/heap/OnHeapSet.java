@@ -1,22 +1,13 @@
 package com.bits.heap;
 
-/*import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;*/
-
 import java.util.HashSet;
 
 public class OnHeapSet {
 
-    //private static final Logger LOG = LoggerFactory.getLogger(OnHeapSet.class);
-
     HashSet<Integer> data;
-    /*ArrayList<Integer> unique;
-    ArrayList<Integer> duplicate;*/
 
     public OnHeapSet() {
         data = new HashSet<Integer>();
-       /* unique = new ArrayList<>();
-        duplicate = new ArrayList<>();*/
     }
 
     public int size(){
@@ -26,11 +17,8 @@ public class OnHeapSet {
     public boolean add(int key) {
         if(!exists(key)) {
             addKey(key);
-            //LOG.error("" + data.size());
             return true;
-            //unique.add(key);
         } else {
-            //duplicate.add(key);
             return false;
         }
     }
