@@ -1,25 +1,37 @@
+package com.bits.heap;
+
+/*import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;*/
+
 import java.util.HashSet;
 
-public class OnHeapDedup {
+public class OnHeapSet {
 
-    public static final long BLOCK_SIZE = 1024;
+    //private static final Logger LOG = LoggerFactory.getLogger(OnHeapSet.class);
 
     HashSet<Integer> data;
     /*ArrayList<Integer> unique;
     ArrayList<Integer> duplicate;*/
 
-    public OnHeapDedup() {
+    public OnHeapSet() {
         data = new HashSet<Integer>();
        /* unique = new ArrayList<>();
         duplicate = new ArrayList<>();*/
     }
 
-    void dedup(int key) {
+    public int size(){
+        return data.size();
+    }
+
+    public boolean add(int key) {
         if(!exists(key)) {
             addKey(key);
+            //LOG.error("" + data.size());
+            return true;
             //unique.add(key);
         } else {
             //duplicate.add(key);
+            return false;
         }
     }
     private boolean addKey(int value) {
@@ -32,13 +44,13 @@ public class OnHeapDedup {
 
     public static void main(String args[]) {
         long startTime = System.currentTimeMillis();
-        OnHeapDedup dedupChecker = new OnHeapDedup();
+        OnHeapSet dedupChecker = new OnHeapSet();
         int count = 0;
         for(int j=0; j<8; j++) {
-            for (int i = 0; i < 10000000; i++)
-                dedupChecker.dedup(i);
-            for (int i = 0; i < 10000000; i += 30) {
-                dedupChecker.dedup(i);
+            for (int i = 0; i < 1000; i++)
+                dedupChecker.add(i);
+            for (int i = 0; i < 1000; i += 30) {
+                dedupChecker.add(i);
                 count++;
             }
         }

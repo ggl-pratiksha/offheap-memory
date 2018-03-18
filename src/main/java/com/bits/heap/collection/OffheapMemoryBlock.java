@@ -1,7 +1,7 @@
-package collection;
+package com.bits.heap.collection;
 
 
-import utils.OffHeapFS;
+import com.bits.heap.utils.OffHeapFS;
 
 /**
  * Stores information of memory allocated in off heap.

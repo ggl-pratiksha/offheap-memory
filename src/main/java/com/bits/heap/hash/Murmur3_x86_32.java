@@ -15,10 +15,9 @@
  * limitations under the License.
  */
 
-package hash;
+package com.bits.heap.hash;
 
-
-import utils.OffHeapFS;
+import com.bits.heap.utils.OffHeapFS;
 
 /**
  * 32-bit Murmur3 hasher.  This is based on Guava's Murmur3_32HashFunction.

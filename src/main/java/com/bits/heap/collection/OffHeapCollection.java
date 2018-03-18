@@ -1,6 +1,7 @@
-package collection;
+package com.bits.heap.collection;
 
-import utils.OffHeapFS;
+
+import com.bits.heap.utils.OffHeapFS;
 
 import java.util.ArrayList;
 
@@ -75,6 +76,8 @@ public abstract class OffHeapCollection {
         memoryBlockOffset = 0;
         OffHeapFS.setMemory(addresses.getOffheapMemoryBlock().getBaseAddress(), addresses.getOffheapMemoryBlock().getLength(), (byte)-1);
     }
+
+    public long size() { return totalElements; }
 
     abstract public boolean containsKey(int key);
 

@@ -1,13 +1,15 @@
-import collection.OffHeapCollection;
-import utils.OffHeapFS;
+package com.bits.heap;
+
+import com.bits.heap.collection.OffHeapCollection;
+import com.bits.heap.utils.OffHeapFS;
 
 /**
  * For now key and value are stored consecutively in mermoy block.
  * eg. if key address is 1000 then value address is 1004.
  */
-public class OffHeapGroupBy extends OffHeapCollection {
+public class OffHeapMap extends OffHeapCollection {
 
-    public OffHeapGroupBy() {
+    public OffHeapMap() {
         super();
     }
 
@@ -16,15 +18,18 @@ public class OffHeapGroupBy extends OffHeapCollection {
      * Else adds new entry in offheap.
      * @param key
      * @param currentValue
+     * @return updated value
      */
-    public void groupBy(int key, long currentValue) {
+    public long put(int key, long currentValue) {
+        long updatedValue = currentValue;
         long keyAddress = addresses.addressOf(key);
         if(keyAddress == -1) {
             keyAddress = putInMemoryBlock(key, currentValue);
             putAddress(key, keyAddress);
         } else {
-            long updatedValue = updateValue(keyAddress, currentValue);
+            updatedValue = updateValue(keyAddress, currentValue);
         }
+        return updatedValue;
     }
 
     /**
@@ -46,6 +51,16 @@ public class OffHeapGroupBy extends OffHeapCollection {
         return keyAddress;
     }
 
+    /**
+     * Checks if key of group by (eg. product id) is present or not.
+     * @param key
+     * @return
+     * If key is already in offset return keyaddress, else return -1.
+     */
+    @Override
+    public boolean containsKey(int key) {
+        return addresses.addressOf(key) == -1? false : true;
+    }
 
     /**
      * Retrieves value stored at given keyaddress, add passed in currentValue to stored value
@@ -61,17 +76,6 @@ public class OffHeapGroupBy extends OffHeapCollection {
         return  updatedValue;
     }
 
-    /**
-     * Checks if key of group by (eg. product id) is present or not.
-     * @param key
-     * @return
-     * If key is already in offset return keyaddress, else return -1.
-     */
-    @Override
-    public boolean containsKey(int key) {
-        return addresses.addressOf(key) == -1? false : true;
-    }
-
     private long valueAddress(long keyAddress) {return (keyAddress + 4);}
 
     @Override
@@ -83,13 +87,13 @@ public class OffHeapGroupBy extends OffHeapCollection {
 
     public static void main(String args[]) {
         long startTime = System.currentTimeMillis();
-        OffHeapGroupBy groupByObj = new OffHeapGroupBy();
-        for(int i=0; i<1000000; i++)
-            groupByObj.groupBy(i, i*10);
+        OffHeapMap groupByObj = new OffHeapMap();
+        for(int i=0; i<1000; i++)
+            groupByObj.put(i, i*10);
 
         int count = 0;
-        for(int i=0; i<1000000; i+=30) {
-            groupByObj.groupBy(i, 10);
+        for(int i=0; i<1000; i+=30) {
+            groupByObj.put(i, 10);
             count++;
         }
         System.out.println("\nTime taken : " + (System.currentTimeMillis() - startTime));

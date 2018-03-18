@@ -1,8 +1,12 @@
-package collection;
+package com.bits.heap.collection;
 
-import hash.Murmur3_x86_32;
-import utils.MemoryUtil;
-import utils.OffHeapFS;
+
+/*mvn archetype:generate -DarchetypeGroupId=org.apache.apex -DarchetypeArtifactId=apex-app-archetype -DarchetypeVersion=3.7.0-SNAPSHOT
+ -DgroupId=com.experiment -Dpackage=com.example.offHeap -DartifactId=apex-offHeap -Dversion=1.0-SNAPSHOT*/
+
+import com.bits.heap.hash.Murmur3_x86_32;
+import com.bits.heap.utils.MemoryUtil;
+import com.bits.heap.utils.OffHeapFS;
 
 /**
  * Long hashset which stores offheap addresses of values stored in offheap.

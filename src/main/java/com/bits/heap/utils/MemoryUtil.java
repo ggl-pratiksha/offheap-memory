@@ -1,4 +1,4 @@
-package utils;
+package com.bits.heap.utils;
 
 public class MemoryUtil {
     static final int MAX_CAPACITY = (1 << 29);
